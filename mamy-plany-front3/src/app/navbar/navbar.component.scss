@@ -1,0 +1,47 @@
+.container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 250px;
+    background-color: rgb(25, 144, 255);
+    height: 100vh;
+    float: left;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.image {
+    height: 250px;
+    width: 250px;
+    padding: 50px;
+}
+
+.buttons {
+    height: 350px;
+    width: 250px;
+}
+
+.buttons-q {
+    height: 70px;
+    width: 250px;
+    padding-left: 35px;
+    line-height: 70px;
+}
+
+.buttons-q:hover {
+    background-color: rgb(128, 193, 255);
+    transition: 0.5s;
+}
+
+.logout {
+    color: white;
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    font-size: 22px;
+}
+

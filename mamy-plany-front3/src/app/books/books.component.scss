@@ -1,0 +1,48 @@
+
+#books-container{
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    padding-left: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.books-container-content {
+    width: 80%;
+  }
+
+.title{
+    font-weight: 800;
+    margin-top: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 40px;
+    color: rgb(25, 144, 255);
+}
+
+.description{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 23px;
+}
+
+// table 
+// {
+//     width: 100%;
+// }
+// th {
+//     background-color:  rgb(243, 112, 56);
+//     color: #fff;
+// }
+
+// td {
+//     background-color: #fff;
+//     border: 1px solid #ccc;
+// }
+
+.button-add 
+{
+    margin-right: 0px;
+    margin-bottom: 10px;
+}

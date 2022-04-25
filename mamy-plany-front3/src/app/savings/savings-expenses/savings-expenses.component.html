@@ -1,0 +1,35 @@
+<form [formGroup]="expensesForm" (ngSubmit)="addExpenses(expensesForm.value)">
+  <div class="form-block">
+    <label>Nazwa</label>
+    <input formControlName="expName" type="text" placeholder="Nazwa wydatku...">
+    <small *ngIf="expensesNameError" class="text-danger">Błąd. Nazwa nie może być pusta</small>
+  </div>
+  <div class="form-block">
+    <label>Wartość</label>
+    <input formControlName="expAmount" type="number" placeholder="Wartość wydatku...">
+    <small *ngIf="expensesAmountError" class="text-danger">Błąd. Kwota musi być dodatnia</small>
+  </div>
+  
+  <button class="btn btn-primary button-add">Zapisz</button>
+</form>
+
+<div *ngIf="expensesArray.length > 0">
+    <table class="mt-3">
+      <tr>
+        <th>Wydatek</th>
+        <th>Wartość</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let expense of expensesArray">
+        <td>{{ expense.expName }}</td>
+        <td>{{ expense.expAmount }} zł</td>
+        <td><a href="javascript:void(0)" (click)="removeExpense(expense.id)">Usuń</a></td>
+      </tr>
+      <tr>
+        <td><b>Razem</b></td>
+        <td><b>{{ totalExpenses }} zł</b></td>
+        <td></td>
+      </tr>
+    </table>
+</div>
+

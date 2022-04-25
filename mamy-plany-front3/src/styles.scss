@@ -1,0 +1,100 @@
+/* You can add global styles to this file, and also import other style files */
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+
+a {
+  text-decoration: none;
+}
+
+.button-add {
+  font-weight: bold;
+  background-color: rgb(0, 143, 143);
+  border-color: rgb(0, 133, 133);
+
+  &:hover {
+    background-color: teal;
+  }
+}
+
+.delete-btn {
+  font-weight: bold;
+  background-color: rgb(214, 0, 0);
+  border-color: rgb(231, 5, 5);
+
+  &:hover {
+    background-color: rgb(199, 0, 0);
+    border-color: rgb(177, 1, 1);
+  }
+}
+ 
+table {
+  width: 100%;
+
+  th:first-of-type {
+    border-top-left-radius: 4px;
+  }
+
+  th:last-of-type {
+    border-top-right-radius: 4px;
+  }
+
+  td {
+    padding: 2px 8px;
+  }
+
+  th {
+    background-color:  #dbdbdb;
+    color: rgb(75, 75, 75);
+    padding: 10px 8px;
+  }
+
+  td {
+    background-color: #fff;
+    border: 1px solid #ccc;
+  }
+}
+
+.form-block {
+  label, input {
+    display: block;
+    border-radius: 0.25rem;
+  }
+
+  input { 
+    width: 100%;
+    padding: 5px 15px;
+    border: 1px solid rgb(151, 151, 151);
+  }
+
+  label {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 16px;
+    color: rgb(80, 80, 80);
+    margin-bottom: 4px;
+  }
+
+  margin-bottom: 12px;
+}
+
+.container-title {
+  text-align: center;
+  background-color: rgb(219, 219, 219);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 30px;
+  padding: 15px 0 15px 15px;
+  color: rgb(75, 75, 75);
+  border-radius: 4px 4px 0 0;
+}
+
+.form-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 10px;
+  padding: 20px 40px;
+  background-color: #fff;
+  border: solid 1px #ccc;
+  border-radius: 0px 0px 4px 4px;
+}
+
+.error-msg {
+  color: #ff4545;
+}

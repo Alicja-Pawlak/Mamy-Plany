@@ -1,0 +1,24 @@
+<div id="calendar-form-container">
+    <div class="calendar-form-container-content">
+        <div class="container-title">
+            Dodaj do kalendarza
+        </div>
+        <div class="form-container">
+            <div>
+                <form [formGroup]="calendarForm" (ngSubmit)="submitEvent(calendarForm.value)">
+                    <div class="form-block"><label>Nazwa</label>
+                    <input formControlName="eventName" type="text">
+                    </div>
+                    <div class="form-block"><label>Czas trwania (w godzinach)</label>
+                    <input formControlName="eventDuration" type="text">
+                    </div>
+                    <div class="form-block"><label>Data rozpoczęcia</label>
+                    <input formControlName="eventDate" type="date">
+                    </div>
+                    <button class="btn btn-primary" type="submit">Zapisz</button>
+                </form>
+            </div>
+            <img width="350px" src="assets/images/calendarform-icon.JPG">    
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="background">
+  <div class="shadow">
+    <div class="main">
+      <div class="main-left">
+        <p class="main-left-text">REJESTRACJA</p>
+        <form [formGroup]="registerForm" (ngSubmit)="tryRegister(registerForm.value)">
+          <div class="form-group">
+            <input type="email" formControlName="email" class="form-control" placeholder="Email" required>
+            <span class="error-msg" *ngIf="!registerForm.get('email')?.valid && registerForm.get('email')?.touched">Nieprawidłowy adres email</span>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" formControlName="password" placeholder="Hasło" required>
+            <!-- <label class="message text-danger">{{message}}</label> -->
+            <span class="error-msg" *ngIf="!registerForm.get('password')?.valid && registerForm.get('password')?.touched">Hasło nie może mieć mniej niż 6 znaków</span>
+          </div>
+          <!--<div class="form-group">
+            <input type="password_confirm" class="form-control" formControlName="password_confirm" placeholder="Powtórz hasło" required>
+            <label class="message">{{message}}</label>
+          </div>-->
+          <button type="submit" class="btn btn-default button-submit">ZAREJESTRUJ</button>
+        </form>
+        <div class="linksr">
+          <a [routerLink]="['/login']"><p>Masz już konto? Zaloguj się</p></a>
+        </div>
+      </div>
+      <div class="main-right">
+        <img src="assets/images/register.png" class="image" />
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -7,16 +7,16 @@ export const firebaseConfig = {
 
   apiKey: "AIzaSyDYVjMz1-abAfGNG2WpfuoJKaPV7zUlrGc",
 
-  authDomain: "mamyplany-96fdf.firebaseapp.com",
+  authDomain: "mamy-plany.firebaseapp.com",
 
-  databaseURL: "https://mamy-plany-default-rtdb.europe-west1.firebasedatabase.app/",
+  databaseURL: "https://mamy-plany-default-rtdb.europe-west1.firebasedatabase.app",
 
-  projectId: "mamyplany-96fdf",
+  projectId: "mamy-plany",
 
-  storageBucket: "mamyplany-96fdf.appspot.com",
+  storageBucket: "mamy-plany.appspot.com",
 
-  messagingSenderId: "362439790988",
+  messagingSenderId: "109210067088",
 
-  appId: "1:362439790988:web:ee6a5d424e768508b646a9"
+  appId: "1:109210067088:web:63db1719320ebd85ea7815"
 
 };

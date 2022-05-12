@@ -42,5 +42,4 @@ export class BooksService {
   getBooks() {
     return this.books$.asObservable();
   }
-
 }

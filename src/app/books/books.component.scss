@@ -1,10 +1,19 @@
 
 #books-container{
+    position: relative;
     margin: 0;
     padding: 0;
-    width: 100vw;
+    width: calc(100vw - 250px);
     height: 100vh;
-    padding-left: 250px;
+    margin-left: 250px;
+}
+
+#books-container-div1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,4 +54,36 @@
 {
     margin-right: 0px;
     margin-bottom: 10px;
+}
+
+button.edit-button {
+    width: 100%;
+    background: none;
+    border: none;
+}
+
+#books-container-div2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba($color: #000000, $alpha: 0.3);
+}
+
+.books-form-container-content {
+    position: relative;
+    margin: auto;
+  }
+
+.container-title-button{
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 20px;
+    padding: 10px;
+    padding-right: 20px;
 }

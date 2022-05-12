@@ -1,33 +1,108 @@
 <div id="books-container">
-  <div class="books-container-content" *ngIf="books.length == 0">
-    <p class="title">Książki</p>
-    <p class="description">
-      Dodaj wypożyczone książki,<br />aby pamiętać o ich zwrocie.
-    </p>
-    <a [routerLink]="['/books/form']" class="btn btn-primary button-add">
-      Dodaj
-    </a>
+  <div id="books-container-div1">
+    <div class="books-container-content" *ngIf="books.length == 0">
+      <p class="title">Książki</p>
+      <p class="description">
+        Dodaj wypożyczone książki,<br />aby pamiętać o ich zwrocie.
+      </p>
+      <a [routerLink]="['/books/form']" class="btn btn-primary button-add">
+        Dodaj
+      </a>
+    </div>
+    <div class="books-container-content" *ngIf="books.length > 0">
+      <p class="title">Książki</p>
+      <a [routerLink]="['/books/form']" class="btn btn-primary button-add">
+        Dodaj
+      </a>
+      <table class="mt-3">
+        <tr>
+          <th>Tytuł</th>
+          <th>Autor</th>
+          <th>Data wypożyczenia</th>
+          <th>Data zwrotu</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let book of books">
+          <td>{{ book.title }}</td>
+          <td>{{ book.author }}</td>
+          <td>{{ book.borrowDate }}</td>
+          <td>{{ book.returnDate }}</td>
+    
+          <td><a href="javascript:void(0)" (click)="edit()">Edytuj</a></td>
+          <td><a href="javascript:void(0)" (click)="removeBook(book.id)">Usuń</a></td>
+        </tr>
+      </table>
+    </div>
   </div>
-  <div class="books-container-content" *ngIf="books.length > 0">
-    <p class="title">Książki</p>
-    <a [routerLink]="['/books/form']" class="btn btn-primary button-add">
-      Dodaj
-    </a>
-    <table class="mt-3">
-      <tr>
-        <th>Tytuł</th>
-        <th>Autor</th>
-        <th>Data wypożyczenia</th>
-        <th>Data zwrotu</th>
-        <th></th>
-      </tr>
-      <tr *ngFor="let book of books">
-        <td>{{ book.title }}</td>
-        <td>{{ book.author }}</td>
-        <td>{{ book.borrowDate }}</td>
-        <td>{{ book.returnDate }}</td>
-        <td><a href="javascript:void(0)" (click)="removeBook(book.id)">Usuń</a></td>
-      </tr>
-    </table>
+  <div id="books-container-div2" #editdiv>
+    <div class="books-form-container-content">
+      <div class="container-title">
+        Edytuj książkę
+      </div>
+      <div class="container-title-button">
+        <a href="javascript:void(0)" (click)="close()"><b>x</b></a>
+      </div>
+      <div class="form-container">
+        <div>
+          <form>
+            <div class="form-block">
+              <label>Tytuł</label>
+              <input value=""/> 
+              <!--<input
+              type="text"
+              name="title"
+              formControlName="title"
+              required
+              />-->
+              <small>Wprowadź tytuł</small>
+            </div>
+  
+            <div class="form-block">
+              <label>Autor</label>
+              <input value=""/> 
+              <!--<input
+              type="text"
+              name="author"
+              formControlName="author"
+              required
+              />-->
+              <small>Wprowadź autora</small>
+            </div>
+  
+            <div class="form-block">
+              <label>Data wypożyczenia</label>
+              <input type="date"/> 
+              <!--<input
+              type="date"
+              name="borrowDate"
+              formControlName="borrowDate"
+              required
+              />-->
+              <small>Data wypożyczenia musi być wcześniejsza niż data zwrotu</small>
+            </div>
+  
+            <div class="form-block">
+              <label>Data zwrotu</label>
+              <input type="date"/> 
+              <!--<input
+              type="date"
+              name="returnDate"
+              formControlName="returnDate"
+              required
+              />-->
+              <small>Data zwrotu musi być późniejsza niż data wypożyczenia</small>
+            </div>
+  
+            <button type="submit" class="btn btn-primary">
+              Zapisz
+            </button>    
+          </form>
+        </div>
+        <img width="350px" src="assets/images/books.JPG" />
+      </div>
+    </div>
   </div>
 </div>
+
+

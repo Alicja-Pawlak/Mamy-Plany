@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BooksService } from '../services/books.service';
@@ -27,6 +27,16 @@ export class BooksComponent implements OnInit {
 
   removeBook(id: any) {
     this.bookService.removeBook(id);
+  }
+
+  @ViewChild("editdiv") editdiv: ElementRef;
+
+  edit() {
+    this.editdiv.nativeElement.style.display = "flex";
+  }
+
+  close() {
+    this.editdiv.nativeElement.style.display = "none";
   }
 
   populateBooks() : void {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BooksService } from '../services/books.service';
 
 @Component({
@@ -13,7 +13,10 @@ export class BooksFormComponent implements OnInit {
 
   bookForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private bookService: BooksService, private router: Router) { 
+  id: string;
+  isAddMode: boolean;
+
+  constructor(private fb: FormBuilder, private bookService: BooksService, private router: Router, private route: ActivatedRoute) { 
     this.bookForm = new FormGroup({
       'title' : new FormControl(null, Validators.required),
       'author' : new FormControl(null, Validators.required),
@@ -32,18 +35,32 @@ export class BooksFormComponent implements OnInit {
     return borrowDate && returnDate && borrowDate.value > returnDate.value ? { invalidDate: true } : null;
   };
 
+  onSubmit(value: any) {
+    console.log('mode', this.isAddMode)
+    if (this.bookForm.valid) {
+      if (this.isAddMode) {
+        this.createBook(value);
+      } else {
+        this.updateBook(value);
+      }
+    }
+    
+  }
 
   createBook(value: any){
-    if (this.bookForm.valid) {
       this.bookService.createBook(value);
       this.router.navigate(["/books"]);
-    }else{
-      console.log("Invalid form", value);
-    }
+  }
+
+  updateBook(value: any) {
+      this.bookService.updateBook(value, this.id);
+      this.router.navigate(["/books"]);
   }
 
 
   ngOnInit(): void {   
     //this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.id = this.route.snapshot.params['id'];
+    this.isAddMode = !this.id;
   }
 }

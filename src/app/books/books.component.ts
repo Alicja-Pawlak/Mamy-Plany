@@ -19,6 +19,7 @@ export class BooksComponent implements OnInit {
   ngOnInit(): void {
     this.bookService.getBooks().subscribe((resp: any) => {
       this.booksList = resp;
+      console.log('books', resp)
       if (this.booksList) {
         this.populateBooks();
       }
@@ -27,16 +28,6 @@ export class BooksComponent implements OnInit {
 
   removeBook(id: any) {
     this.bookService.removeBook(id);
-  }
-
-  @ViewChild("editdiv") editdiv: ElementRef;
-
-  edit() {
-    this.editdiv.nativeElement.style.display = "flex";
-  }
-
-  close() {
-    this.editdiv.nativeElement.style.display = "none";
   }
 
   populateBooks() : void {

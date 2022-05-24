@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, catchError, map, Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
@@ -18,6 +19,7 @@ export class BooksService {
       this.books$.next(this.books);
     })
   }
+
   createBook(book: any) {
     this.http.post(`${environment.apiUrl}/Books/${this.authService.currentUserValue?.uid}.json`, book).subscribe((resBook: any) => {
       let key = resBook.name;
@@ -30,6 +32,18 @@ export class BooksService {
       this.books$.next(this.books);
       
     });
+  }
+
+  updateBook(book: any, id: string) {
+    this.http.patch(`${environment.apiUrl}/Books/${this.authService.currentUserValue?.uid}/${id}.json`, book).subscribe((resp: any) => {
+      this.books[id] = {
+          borrowDate: book.borrowDate,
+          returnDate: book.returnDate,
+          author: book.author,
+          title: book.title
+      };
+      this.books$.next(this.books);
+    })
   }
 
   removeBook(id: any) {

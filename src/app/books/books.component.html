@@ -29,8 +29,8 @@
           <td>{{ book.borrowDate }}</td>
           <td>{{ book.returnDate }}</td>
     
-          <td><a [routerLink]="['/books/form', book.id]">Edytuj</a></td>
-          <td><a (click)="removeBook(book.id)">Usuń</a></td>
+          <td><a [routerLink]="['/books/form', book.id]"><span class="edit">Edytuj</span></a></td>
+          <td><a (click)="removeBook(book.id)"><span class="delete">Usuń</span></a></td>
         </tr>
       </table>
     </div>

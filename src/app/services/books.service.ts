@@ -12,14 +12,12 @@ export class BooksService {
 
   private books:any = {};
   private books$ = new BehaviorSubject<any[]>([]);
-
   constructor(private http: HttpClient, private authService: AuthService) { 
     this.http.get(`${environment.apiUrl}/Books/${this.authService.currentUserValue?.uid}.json`).subscribe(books => {
       books ? this.books = books : {};
       this.books$.next(this.books);
     })
   }
-
   createBook(book: any) {
     this.http.post(`${environment.apiUrl}/Books/${this.authService.currentUserValue?.uid}.json`, book).subscribe((resBook: any) => {
       let key = resBook.name;
@@ -30,7 +28,6 @@ export class BooksService {
           title: book.title
       };
       this.books$.next(this.books);
-      
     });
   }
 

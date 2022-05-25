@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LearnService } from '../services/learn.service';
+
 @Component({
   selector: 'app-learn',
   templateUrl: './learn.component.html',
@@ -16,17 +17,13 @@ export class LearnComponent implements OnInit {
   learn: any[] = [];
 
   ngOnInit(): void {
-
     this.learnService.getLearn().subscribe((resp: any) => {
       this.learnList = resp;
       if (this.learnList) {
         this.populateLearn();
       }
-
-      console.log(this.learn)
       })
   }
-
 
   populateLearn() : void {
     this.learn = [];
@@ -46,7 +43,4 @@ export class LearnComponent implements OnInit {
   removeLearn(id: any) {
     this.learnService.removeLearn(id);
   }
-
-
-
 }

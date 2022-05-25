@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, catchError, map, Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
@@ -27,6 +28,18 @@ export class LearnService {
       };
       this.learn$.next(this.learn);
     });
+  }
+
+
+  updateLearn(learn: any, id: string) {
+    this.http.patch(`${environment.apiUrl}/Learn/${this.authService.currentUserValue?.uid}/${id}.json`, learn).subscribe((resp: any) => {
+      this.learn[id] = {
+          endDate: learn.endDate,
+        subject: learn.subject,
+        topic: learn.topic
+      };
+      this.learn$.next(this.learn);
+    })
   }
 
   removeLearn(id: any) {

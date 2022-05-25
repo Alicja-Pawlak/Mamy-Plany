@@ -32,7 +32,8 @@ const routes: Routes = [
     {path: "books/form", component: BooksFormComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }},
     {path: "books/form/:id", component: BooksFormComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }},
     {path: "learn", component: LearnComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }},
-    {path: "learn/form", component: LearnFormComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }}
+    {path: "learn/form", component: LearnFormComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }},
+    {path: "learn/form/:id", component: LearnFormComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }}
   ]},
   
 ];

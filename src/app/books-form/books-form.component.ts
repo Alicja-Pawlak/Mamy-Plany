@@ -9,8 +9,6 @@ import { BooksService } from '../services/books.service';
   styleUrls: ['./books-form.component.scss']
 })
 export class BooksFormComponent implements OnInit {
-
-
   bookForm: FormGroup;
 
   id: string;

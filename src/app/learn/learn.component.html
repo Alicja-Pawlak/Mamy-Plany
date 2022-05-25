@@ -18,13 +18,16 @@
           <th>Temat</th>
           <th>Przedmiot</th>
           <th>Data zakończenia</th>
-          <th>Opcje</th>
+          <th></th>
+          <th></th>
         </tr>
         <tr *ngFor="let learn of learn">
           <td>{{ learn.topic }}</td>
           <td>{{ learn.subject }}</td>
           <td>{{ learn.endDate }}</td>
-          <td><a href="javascript:void(0)" (click)="removeLearn(learn.id)">Usuń</a></td>
+
+          <td><a [routerLink]="['/learn/form', learn.id]"><span class="edit">Edytuj</span></a></td>
+          <td><a (click)="removeLearn(learn.id)"><span class="delete">Usuń</span></a></td>
         </tr>
       </table>
     </div>

@@ -1,9 +1,14 @@
 <div id="learn-form-container">
     <div class="learn-form-container-content">
-        <div class="container-title">Dodaj temat do nauki</div>
+      <div *ngIf="isAddMode" class="container-title">
+        Dodaj temat nauki
+      </div>
+      <div *ngIf="!isAddMode" class="container-title">
+        Edytuj temat nauki
+      </div>
         <div class="form-container">
             <div>
-                <form [formGroup]="learnForm" (ngSubmit)="createLearn(learnForm.value)">
+                <form [formGroup]="learnForm" (ngSubmit)="onSubmit(learnForm.value)">
                   
                   <div class="form-block">
                     <label>Temat</label>

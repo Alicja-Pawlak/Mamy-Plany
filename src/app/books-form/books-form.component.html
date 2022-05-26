@@ -1,11 +1,14 @@
 <div id="books-form-container">
   <div class="books-form-container-content">
-    <div class="container-title">
+    <div *ngIf="isAddMode" class="container-title">
       Dodaj wypożyczone książki
+    </div>
+    <div *ngIf="!isAddMode" class="container-title">
+      Edytuj wypożyczone książki
     </div>
     <div class="form-container">
       <div>
-        <form [formGroup]="bookForm" (ngSubmit)="createBook(bookForm.value)">
+        <form [formGroup]="bookForm" (ngSubmit)="onSubmit(bookForm.value)">
           <div class="form-block">
             <label>Tytuł</label>
             <input

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, catchError, map, Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
@@ -11,7 +12,6 @@ export class BooksService {
 
   private books:any = {};
   private books$ = new BehaviorSubject<any[]>([]);
-
   constructor(private http: HttpClient, private authService: AuthService) { 
     this.http.get(`${environment.apiUrl}/Books/${this.authService.currentUserValue?.uid}.json`).subscribe(books => {
       books ? this.books = books : {};
@@ -28,8 +28,19 @@ export class BooksService {
           title: book.title
       };
       this.books$.next(this.books);
-      
     });
+  }
+
+  updateBook(book: any, id: string) {
+    this.http.patch(`${environment.apiUrl}/Books/${this.authService.currentUserValue?.uid}/${id}.json`, book).subscribe((resp: any) => {
+      this.books[id] = {
+          borrowDate: book.borrowDate,
+          returnDate: book.returnDate,
+          author: book.author,
+          title: book.title
+      };
+      this.books$.next(this.books);
+    })
   }
 
   removeBook(id: any) {

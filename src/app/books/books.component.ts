@@ -25,20 +25,6 @@ export class BooksComponent implements OnInit {
       })
   }
 
-  removeBook(id: any) {
-    this.bookService.removeBook(id);
-  }
-
-  @ViewChild("editdiv") editdiv: ElementRef;
-
-  edit() {
-    this.editdiv.nativeElement.style.display = "flex";
-  }
-
-  close() {
-    this.editdiv.nativeElement.style.display = "none";
-  }
-
   populateBooks() : void {
     this.books = [];
     for (const book of Object.keys(this.booksList) ) {
@@ -55,5 +41,7 @@ export class BooksComponent implements OnInit {
     }
   }
 
-
+  removeBook(id: any) {
+    this.bookService.removeBook(id);
+  }
 }

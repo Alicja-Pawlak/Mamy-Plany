@@ -31,6 +31,7 @@ export class SavingsService {
       let key = resExp.name;
       this.expenses[key] = {
         expAmount: value.expAmount,
+        expCategory: value.expCategory,
         expName: value.expName
       };
       this.expenses$.next(this.expenses);

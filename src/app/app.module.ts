@@ -31,6 +31,8 @@ import { SavingsRevenueComponent } from './savings/savings-revenue/savings-reven
 import { SavingsComponent } from './savings/savings.component';
 import { appInitializer } from './helpers/app-initializer';
 import { AuthService } from './services/auth.service';
+// for pie chart
+import { GoogleChartsModule } from 'angular-google-charts';
 
 
 
@@ -63,6 +65,7 @@ import { AuthService } from './services/auth.service';
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    GoogleChartsModule, //pie chart
   ],
   providers: [
     {provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AuthService]}

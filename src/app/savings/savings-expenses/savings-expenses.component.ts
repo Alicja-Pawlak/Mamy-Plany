@@ -19,9 +19,25 @@ export class SavingsExpensesComponent implements OnInit {
 
   expensesArray: any[] = [];
 
+  categoriesArray: any[] = ['Jedzenie', 'Mieszkanie', 'Zdrowie, higiena i chemia', 'Ubranie', 'Relaks', 'Transport', 'Inne wydatki'];
+
+  myData = [
+    ['Jedzenie', 0], 
+    ['Mieszkanie', 0],
+    ['Zdrowie, higiena i chemia', 0],
+    ['Relaks', 0],
+    ['Transport', 0],
+    ['Inne wydatki', 0]
+  ];
+
+  myType = ChartType.PieChart;
+  myTitle = 'Szczegóły wydatków';
+  myColumns = ['Kategoria', 'Przychody'];
+
   expensesForm = new FormGroup({
     expName: new FormControl(null, Validators.required),
-    expAmount: new FormControl(null, Validators.required)
+    expAmount: new FormControl(null, Validators.required),
+    expCategory: new FormControl(this.categoriesArray[0])
   })
 
   addExpenses(value: any) {
@@ -60,17 +76,31 @@ export class SavingsExpensesComponent implements OnInit {
   }
 
   calculateExpenses() {
-    let amount;
+    let amount: number;
+    let category: String;
+    let value: number;
     this.totalExpenses = 0;
     for (const key of Object.keys(this.expenses!)) {
       amount = Number(this.expenses![key].expAmount);
       if (!isNaN(amount)) this.totalExpenses += amount;
       
+      category = String(this.expenses![key].expCategory)
+
+      // calculate expenses for each category
+      this.myData.forEach(element => {
+          if(element[0] == category){
+            value = Number(element[1]);
+            value += amount;
+            element[1] = value;
+          }
+      });
+
     }
   }
 
   ngOnInit(): void {
     this.getExpenses();
+    this.calculateExpenses();
     console.log(this.expenses);
   }
 
@@ -79,6 +109,7 @@ export class SavingsExpensesComponent implements OnInit {
     for (const expense of Object.keys(this.expenses) ) {
       this.expensesArray.push({
           expName: this.expenses[expense].expName,
+          expCategory: this.expenses[expense].expCategory,
           expAmount:  this.expenses[expense].expAmount,
           id: expense
         },
@@ -89,3 +120,8 @@ export class SavingsExpensesComponent implements OnInit {
   }
 
 }
+
+export enum ChartType {
+  PieChart = 'PieChart'
+}
+

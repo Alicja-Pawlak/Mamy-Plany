@@ -21,14 +21,7 @@ export class SavingsExpensesComponent implements OnInit {
 
   categoriesArray: any[] = ['Jedzenie', 'Mieszkanie', 'Zdrowie, higiena i chemia', 'Ubranie', 'Relaks', 'Transport', 'Inne wydatki'];
 
-  myData = [
-    ['Jedzenie', 0], 
-    ['Mieszkanie', 0],
-    ['Zdrowie, higiena i chemia', 0],
-    ['Relaks', 0],
-    ['Transport', 0],
-    ['Inne wydatki', 0]
-  ];
+  myData: any[];
 
   myType = ChartType.PieChart;
   myTitle = 'Szczegóły wydatków';
@@ -64,6 +57,14 @@ export class SavingsExpensesComponent implements OnInit {
     this.savingsService.getExpenses().subscribe((resp: any) => {
       this.expenses = resp;
       if (this.expenses) {
+        this.myData = [
+          ['Jedzenie', 0], 
+          ['Mieszkanie', 0],
+          ['Zdrowie, higiena i chemia', 0],
+          ['Relaks', 0],
+          ['Transport', 0],
+          ['Inne wydatki', 0]
+        ];
         this.populateExpenses();
         this.calculateExpenses();
         
@@ -100,8 +101,6 @@ export class SavingsExpensesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getExpenses();
-    this.calculateExpenses();
-    console.log(this.expenses);
   }
 
   populateExpenses() : void {

@@ -45,8 +45,8 @@
   </table>
 </div>
 
-<div class="position">
-  <google-chart [data]="myData" [type]="myType" [columns]="myColumns" [title]="myTitle" style="margin-top:12px;">
+<div class="position" *ngIf="expensesArray.length != 0">
+  <google-chart [data]="myData" [type]="myType" [columns]="myColumns" [title]="myTitle" [options]="myOptions" style="margin-top:12px;">
   </google-chart>
 </div>
 

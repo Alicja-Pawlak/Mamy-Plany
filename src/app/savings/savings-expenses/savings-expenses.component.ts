@@ -26,6 +26,11 @@ export class SavingsExpensesComponent implements OnInit {
   myType = ChartType.PieChart;
   myTitle = 'Szczegóły wydatków';
   myColumns = ['Kategoria', 'Przychody'];
+  myOptions = {
+    'legend':'left',
+    'width':800,
+    'height':300
+  }
 
   expensesForm = new FormGroup({
     expName: new FormControl(null, Validators.required),
@@ -61,6 +66,7 @@ export class SavingsExpensesComponent implements OnInit {
           ['Jedzenie', 0], 
           ['Mieszkanie', 0],
           ['Zdrowie, higiena i chemia', 0],
+          ['Ubranie', 0],
           ['Relaks', 0],
           ['Transport', 0],
           ['Inne wydatki', 0]

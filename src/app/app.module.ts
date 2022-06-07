@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { APP_INITIALIZER, CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
@@ -67,6 +67,7 @@ import { GoogleChartsModule } from 'angular-google-charts';
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     GoogleChartsModule, //pie chart
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [
     {provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AuthService]}
   ],

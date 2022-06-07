@@ -3,15 +3,17 @@
     margin: 0;
     padding: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     padding-left: 250px;
     display: flex;
-    align-items: center;
+    margin-top: 15px;
     justify-content: center;
   }
   
 .savings-container-content {
     width: 80%;
+    display: flex;
+    justify-content: center;
 }
   
 
@@ -45,7 +47,13 @@ a{
 }
 
 .balance {
-    width: 100%;
+    width: auto;
     text-align: center;
     font-size: 24px;
+    padding-top: 200px!important;
+    background-color: #fff;
+}
+
+.title {
+    margin-bottom: 5px!important;
 }

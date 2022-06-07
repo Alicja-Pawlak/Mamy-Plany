@@ -1,4 +1,4 @@
-<div>
+
   <form [formGroup]="revenueForm">
     <div class="form-block">
       <label>Nazwa</label>
@@ -13,23 +13,26 @@
     <button (click)="addRevenue(revenueForm.value)" class="btn btn-primary button-add">Zapisz</button>
   </form>
 
-  <div *ngIf="revenueArray.length > 0">
-    <table class="mt-3">
+  <div *ngIf="revenueArray.length > 0"  style="margin-top:83px">
+    <table>
       <tr>
         <th>Przychód</th>
         <th>Wartość</th>
-        <th></th>
       </tr>
+    </table>
+  <div class="mt3table">
+    <table class="mt-3">
       <tr *ngFor="let revenue of revenueArray">
         <td>{{ revenue.revName }}</td>
         <td>{{ revenue.revAmount }} zł</td>
         <td><a href="javascript:void(0)" (click)="removeRevenue(revenue.id)">Usuń</a></td>
       </tr>
+    </table>
+  </div>
+    <table>
       <tr>
         <td><b>Razem</b></td>
         <td><b>{{ totalRevenue }} zł</b></td>
-        <td></td>
       </tr>
     </table>
   </div>
-</div>
